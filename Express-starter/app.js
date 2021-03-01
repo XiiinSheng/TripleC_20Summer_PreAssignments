@@ -6,6 +6,7 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var testRouter = require('./routes/test.route');
+var personsRouter = require('./routes/persons.route');  // added
 
 const mongoose = require('mongoose')
 const mongodb_key = require('./config/default').mongodb_key
@@ -23,7 +24,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/test', testRouter)
+app.use('/test', testRouter);
+app.use('/persons', personsRouter);   // added
 
 //connect mongodb
 mongoose
